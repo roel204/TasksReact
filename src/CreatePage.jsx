@@ -45,11 +45,11 @@ const CreatePage = () => {
     };
 
     return (
-        <div className="max-w-2xl mx-auto mt-8 p-8 bg-gray-800 rounded-md shadow-md">
+        <div className="w-30vw max-w-2xl mx-auto mt-8 p-8 bg-gray-800 rounded-md shadow-md">
             <Link to="/" className="bg-gray-600 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-gray-700">
                 &#8592;
             </Link>
-            <h1 className="text-3xl font-bold m-4">Create New Task</h1>
+            <h1 className="mt-4 mb-4 text-3xl font-bold">Create New Task</h1>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label className="block text-gray-500 mb-1" htmlFor="name">
