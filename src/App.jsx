@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import SearchBar from './SearchBar';
 import TaskCard from './TaskCard';
 import Pagination from './Pagination';
+import {Link} from "react-router-dom";
 
 function App() {
     const [tasks, setTasks] = useState(null);
@@ -45,6 +46,9 @@ function App() {
     return (
         <div className="bg-black text-white min-h-screen p-8 flex flex-col items-center">
             <SearchBar/>
+            <Link to="/create" className="mt-4 bg-lime-500 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-lime-600">
+                Create New Task
+            </Link>
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-8">
 
                 {tasks.map((task, index) => (
