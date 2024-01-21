@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.jsx'
 import DetailsPage from "./DetailsPage.jsx";
 import CreatePage from "./CreatePage.jsx";
+import EditPage from "./EditPage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     {
         path: "/create",
         element: <CreatePage />,
+    },
+    {
+        path: "/edit/:taskId",
+        element: <EditPage />,
     },
 ]);
 

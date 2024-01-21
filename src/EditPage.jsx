@@ -1,12 +1,39 @@
-import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
-const CreatePage = () => {
+const EditPage = () => {
+    const { taskId } = useParams();
     const [formData, setFormData] = useState({
         name: '',
         status: '',
         description: '',
     });
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchTaskDetails = async () => {
+            try {
+                const response = await fetch(`http://localhost:8000/tasks/${taskId}`, {
+                    method: 'GET',
+                    headers: {
+                        Accept: 'application/json',
+                    },
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setFormData(data);
+                } else {
+                    console.error('Failed to fetch task details:', response.status);
+                }
+            } catch (error) {
+                console.error('Error fetching task details:', error);
+            }
+        };
+
+        fetchTaskDetails();
+    }, [taskId]);
 
     const handleChange = (e) => {
         setFormData({
@@ -15,32 +42,27 @@ const CreatePage = () => {
         });
     };
 
-    const navigate = useNavigate();
-
-    const handleSubmit = async (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:8000/tasks', {
-                method: 'POST',
+            const response = await fetch(`http://localhost:8000/tasks/${taskId}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
+                    Accept: 'application/json',
                 },
                 body: JSON.stringify(formData),
             });
 
             if (response.ok) {
-                // Assuming the API returns the newly created task
-                const newTask = await response.json();
-
-                // Redirect to the details page of the newly created task
-                navigate(`/details/${newTask._id}`);
+                // Redirect to the details page of the updated task
+                navigate(`/details/${taskId}`);
             } else {
-                console.error('Failed to create task:', response.status);
+                console.error('Failed to update task:', response.status);
             }
         } catch (error) {
-            console.error('Error creating task:', error);
+            console.error('Error updating task:', error);
         }
     };
 
@@ -51,8 +73,8 @@ const CreatePage = () => {
                     &#8592;
                 </Link>
             </div>
-            <h1 className="mt-4 mb-4 text-3xl font-bold">Create New Task</h1>
-            <form onSubmit={handleSubmit}>
+            <h1 className="mt-4 mb-4 text-3xl font-bold">Edit Task</h1>
+            <form onSubmit={handleUpdate}>
                 <div className="mb-4">
                     <label className="block text-gray-500 mb-1" htmlFor="name">
                         Name
@@ -94,8 +116,11 @@ const CreatePage = () => {
                     />
                 </div>
                 <div className="mt-8">
-                    <button type="submit" className="bg-lime-500 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-lime-600">
-                        Create Task
+                    <button
+                        type="submit"
+                        className="bg-lime-500 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-lime-600"
+                    >
+                        Update Task
                     </button>
                 </div>
             </form>
@@ -103,4 +128,4 @@ const CreatePage = () => {
     );
 };
 
-export default CreatePage;
+export default EditPage;
