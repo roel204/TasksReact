@@ -1,3 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -12,40 +16,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: #aaff00; /* Lime green */
-  text-decoration: none;
-}
-a:hover {
-  color: #8cc63f; /* Darker lime green */
-}
-
 body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid #aaff00; /* Lime green border */
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #000; /* Black background */
-  color: #aaff00; /* Lime green text */
-  cursor: pointer;
-  transition: border-color 0.25s, color 0.25s, background-color 0.25s;
-}
-button:hover {
-  border-color: #8cc63f; /* Darker lime green on hover */
-  color: #8cc63f; /* Darker lime green text on hover */
-  background-color: #3e423a
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  background-color: #000;
+  color: #aaff00;
 }

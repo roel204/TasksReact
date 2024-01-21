@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import SearchBar from './SearchBar';
 import TaskCard from './TaskCard';
 import Pagination from './Pagination';
@@ -6,7 +6,7 @@ import Pagination from './Pagination';
 function App() {
     const [tasks, setTasks] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [tasksPerPage] = useState(2);
+    const [tasksPerPage, setTasksPerPage] = useState(5);
     const [totalPages, setTotalPages] = useState(1);
 
     const getTasks = async () => {
@@ -36,27 +36,31 @@ function App() {
 
     useEffect(() => {
         getTasks();
-    }, [currentPage]);
+    }, [currentPage, tasksPerPage]);
 
     if (!tasks) {
         return <div>Loading...</div>;
     }
 
     return (
-        <div className="bg-black text-white min-h-screen p-8">
-            <SearchBar />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+        <div className="bg-black text-white min-h-screen p-8 flex flex-col items-center">
+            <SearchBar/>
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-8">
+
                 {tasks.map((task, index) => (
-                    <TaskCard key={index} task={task} />
+                    <TaskCard key={index} task={task}/>
                 ))}
             </div>
-            <Pagination
-                tasksPerPage={tasksPerPage}
-                totalTasks={totalPages * tasksPerPage}
-                currentPage={currentPage}
-                totalPages={totalPages}
-                setCurrentPage={setCurrentPage}
-            />
+            <div className="mt-auto">
+                <Pagination
+                    tasksPerPage={tasksPerPage}
+                    totalTasks={totalPages * tasksPerPage}
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    setCurrentPage={setCurrentPage}
+                    setTasksPerPage={setTasksPerPage}
+                />
+            </div>
         </div>
     );
 }
