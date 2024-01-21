@@ -36,13 +36,13 @@ const DetailsPage = () => {
 
     return (
         <div className="max-w-2xl mx-auto mt-8 p-8 bg-gray-800 rounded-md shadow-md">
-            <h1 className="text-3xl font-bold mb-4">{task.name}</h1>
+            <Link to="/" className="bg-gray-600 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-gray-700">
+                &#8592;
+            </Link>
+            <h1 className="text-3xl font-bold mb-4 mt-4">{task.name}</h1>
             <p className="text-gray-500 mb-4">{`Status: ${task.status}`}</p>
             <p className="text-gray-300">{`Description: ${task.description || 'N/A'}`}</p>
             <div className="mt-8">
-                <Link to="/" className="bg-gray-600 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-gray-700">
-                    Back to Home
-                </Link>
             </div>
         </div>
     );
