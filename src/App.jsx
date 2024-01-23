@@ -45,17 +45,21 @@ function App() {
 
     return (
         <div className="bg-black text-white min-h-screen p-8 flex flex-col items-center">
-            <SearchBar/>
-            <Link to="/create" className="mt-4 bg-lime-500 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-lime-600">
-                Create New Task
-            </Link>
+            <div className="sticky top-0 z-10 bg-black pb-6 pt-4 px-10">
+                <SearchBar/>
+                <Link to="/create" className="block bg-lime-500 text-white text-center py-2 px-4 rounded-md transition duration-300 hover:bg-lime-600">
+                    Create New Task
+                </Link>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-8">
 
                 {tasks.map((task, index) => (
                     <TaskCard key={index} task={task}/>
                 ))}
             </div>
-            <div className="mt-auto">
+
+            <div className="fixed bottom-0 p-4 bg-black text-center z-10">
                 <Pagination
                     tasksPerPage={tasksPerPage}
                     totalTasks={totalPages * tasksPerPage}

@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchBar = () => {
     return (
-        <div className="mb-8">
+        <div className="w-30vw mb-4">
             <input
                 type="text"
                 placeholder="Search..."
