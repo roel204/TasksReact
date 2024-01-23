@@ -66,7 +66,7 @@ const DetailsPage = () => {
 
     return (
         <>
-            <div className="w-30vw max-w-2xl mx-auto mt-8 p-8 bg-gray-800 rounded-md shadow-md">
+            <div className="responsive-width max-w-2xl mx-auto mt-8 p-8 bg-gray-800 rounded-md shadow-md">
                 <div className="flex justify-between border-b-2 border-gray-700 pb-4">
                     <Link to="/" className="bg-gray-600 text-white py-2 px-6 rounded-md transition duration-300 hover:bg-gray-700">
                         &#8592;

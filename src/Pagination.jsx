@@ -7,10 +7,10 @@ const Pagination = ({tasksPerPage, totalTasks, currentPage, setCurrentPage, setT
     const options = [2, 5, 10, 25];
 
     return (
-        <div className="w-30vw flex flex-nowrap items-center justify-center">
+        <div className="responsive-width flex flex-nowrap items-center justify-center">
             <div className="flex-1">
                 <select
-                    className="block p-3 rounded-md bg-gray-600 text-white"
+                    className="block p-3 rounded-md bg-gray-600 text-white cursor-pointer"
                     value={tasksPerPage}
                     onChange={(e) => {
                         setTasksPerPage(Number(e.target.value))
@@ -24,7 +24,8 @@ const Pagination = ({tasksPerPage, totalTasks, currentPage, setCurrentPage, setT
                     ))}
                 </select>
             </div>
-            <div className="">
+
+            <div>
                 <button
                     className="mr-7 p-3 rounded-md bg-gray-700 text-gray-300 transition duration-100 hover:bg-lime-600"
                     disabled={currentPage === 1}
@@ -50,9 +51,7 @@ const Pagination = ({tasksPerPage, totalTasks, currentPage, setCurrentPage, setT
                     {'>'}
                 </button>
             </div>
-            <div className="flex-1">
-
-            </div>
+            <div className="flex-1"></div>
         </div>
     );
 };

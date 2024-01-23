@@ -52,7 +52,7 @@ function App() {
                 </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-8 mb-10">
 
                 {tasks.map((task, index) => (
                     <TaskCard key={index} task={task}/>

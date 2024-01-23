@@ -26,3 +26,24 @@ body {
   background-color: #000;
   color: #aaff00;
 }
+
+/* Responsive width for screens smaller than 640px */
+@media screen and (max-width: 640px) {
+  .responsive-width {
+    width: 90vw;
+  }
+}
+
+/* Responsive width for screens between 641px and 1024px */
+@media screen and (min-width: 641px) and (max-width: 1224px) {
+  .responsive-width {
+    width: 60vw;
+  }
+}
+
+/* Responsive width for screens larger than 1024px */
+@media screen and (min-width: 1225px) {
+  .responsive-width {
+    width: 40vw;
+  }
+}
