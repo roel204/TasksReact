@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const TaskCard = ({ task }) => {
+const TaskCard = ({ task, getTasks }) => {
 
     const toggleBookmark = async (event) => {
         event.preventDefault();
@@ -11,7 +11,7 @@ const TaskCard = ({ task }) => {
             });
 
             if (response.ok) {
-                //Reload?
+                getTasks();
             } else {
                 console.error('Failed to toggle bookmark:', response.status);
             }

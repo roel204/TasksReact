@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import TaskCard from './TaskCard';
 import Pagination from './Pagination';
 import {Link} from "react-router-dom";
@@ -9,7 +9,7 @@ function App() {
     const [tasksPerPage, setTasksPerPage] = useState(5);
     const [totalPages, setTotalPages] = useState(1);
 
-    const getTasks = async () => {
+    const getTasks = useCallback(async () => {
         try {
             const response = await fetch(`http://localhost:8000/tasks?start=${(currentPage - 1) * tasksPerPage + 1}&limit=${tasksPerPage}`, {
                 method: "GET",
@@ -35,12 +35,12 @@ function App() {
         } catch (error) {
             console.error("Error fetching tasks:", error);
         }
-    };
+    }, [currentPage, tasksPerPage]);
 
 
     useEffect(() => {
         getTasks();
-    }, [tasks, currentPage, tasksPerPage]);
+    }, [getTasks]);
 
     if (!tasks) {
         return <div>Loading...</div>;
@@ -57,7 +57,11 @@ function App() {
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-8 mb-10">
 
                 {tasks.map((task, index) => (
-                    <TaskCard key={index} task={task}/>
+                    <TaskCard
+                        key={index}
+                        task={task}
+                        getTasks={getTasks}
+                    />
                 ))}
             </div>
 
