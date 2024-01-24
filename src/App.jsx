@@ -45,10 +45,13 @@ function App() {
 
     return (
         <div className="bg-black text-white min-h-screen p-8 flex flex-col items-center">
-            <div className="sticky top-0 z-10 bg-black pb-6 pt-4 px-10">
-                <Link to="/create" className="responsive-width block bg-lime-500 text-white text-center py-2 px-4 rounded-md transition duration-300 hover:bg-lime-600">
-                    Create New Task
-                </Link>
+            <div className="sticky top-0 z-10 bg-black pb-6 pt-4 px-6">
+                <div className="flex responsive-width">
+                    <h1 className="text-4xl text-lime-400 font-bold mr-10">Tasks:</h1>
+                    <Link to="/create" className="block w-full bg-lime-500 text-white text-center py-2 px-4 rounded-md transition duration-300 hover:bg-lime-600">
+                        Create New Task
+                    </Link>
+                </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-8 mb-10">
@@ -62,7 +65,7 @@ function App() {
                 ))}
             </div>
 
-            <div className="fixed bottom-0 p-4 px-10 bg-black text-center z-10">
+            <div className="fixed bottom-0 p-4 px-6 bg-black text-center z-10">
                 <Pagination
                     tasksPerPage={tasksPerPage}
                     currentPage={currentPage}

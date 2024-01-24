@@ -52,7 +52,7 @@ const CreatePage = () => {
                 </Link>
             </div>
             <h1 className="mt-4 mb-4 text-3xl font-bold">Create New Task</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoComplete="off">
                 <div className="mb-4">
                     <label className="block text-gray-500 mb-1" htmlFor="name">
                         Name
@@ -63,7 +63,7 @@ const CreatePage = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring focus:border-lime-500"
+                        className="w-full p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring focus:ring-lime-500"
                         required
                     />
                 </div>
@@ -77,7 +77,7 @@ const CreatePage = () => {
                         name="status"
                         value={formData.status}
                         onChange={handleChange}
-                        className="w-full p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring focus:border-lime-500"
+                        className="w-full p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring focus:ring-lime-500"
                         required
                     />
                 </div>
@@ -90,7 +90,7 @@ const CreatePage = () => {
                         name="description"
                         value={formData.description}
                         onChange={handleChange}
-                        className="w-full p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring focus:border-lime-500"
+                        className="w-full h-64 p-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring focus:ring-lime-500"
                     />
                 </div>
                 <div className="mt-8">

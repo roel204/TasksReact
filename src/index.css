@@ -23,7 +23,7 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #000;
+  background: linear-gradient(to right, rgb(100, 255, 0, 0.1), transparent 25%, #000 10%, #000 0%, transparent 75%, rgba(100, 255, 0, 0.1));
   color: #aaff00;
 }
 
