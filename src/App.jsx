@@ -21,10 +21,7 @@ function App() {
             if (response.ok) {
                 const data = await response.json();
                 if (data && Array.isArray(data.items)) {
-                    // Sort tasks to bring bookmarked tasks to the top
-                    const sortedTasks = data.items.sort((a, b) => (b.bookmark ? 1 : 0) - (a.bookmark ? 1 : 0));
-
-                    setTasks(sortedTasks);
+                    setTasks(data.items);
                     setTotalPages(data.pagination.totalPages);
                 } else {
                     console.error("Invalid data format received:", data);
