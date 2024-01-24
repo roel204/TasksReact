@@ -59,10 +59,9 @@ function App() {
                 ))}
             </div>
 
-            <div className="fixed bottom-0 p-4 bg-black text-center z-10">
+            <div className="fixed bottom-0 p-4 px-10 bg-black text-center z-10">
                 <Pagination
                     tasksPerPage={tasksPerPage}
-                    totalTasks={totalPages * tasksPerPage}
                     currentPage={currentPage}
                     totalPages={totalPages}
                     setCurrentPage={setCurrentPage}
