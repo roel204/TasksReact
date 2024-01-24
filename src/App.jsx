@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import SearchBar from './SearchBar';
 import TaskCard from './TaskCard';
 import Pagination from './Pagination';
 import {Link} from "react-router-dom";
@@ -22,7 +21,10 @@ function App() {
             if (response.ok) {
                 const data = await response.json();
                 if (data && Array.isArray(data.items)) {
-                    setTasks(data.items);
+                    // Sort tasks to bring bookmarked tasks to the top
+                    const sortedTasks = data.items.sort((a, b) => (b.bookmark ? 1 : 0) - (a.bookmark ? 1 : 0));
+
+                    setTasks(sortedTasks);
                     setTotalPages(data.pagination.totalPages);
                 } else {
                     console.error("Invalid data format received:", data);
@@ -35,9 +37,10 @@ function App() {
         }
     };
 
+
     useEffect(() => {
         getTasks();
-    }, [currentPage, tasksPerPage]);
+    }, [tasks, currentPage, tasksPerPage]);
 
     if (!tasks) {
         return <div>Loading...</div>;
@@ -46,8 +49,7 @@ function App() {
     return (
         <div className="bg-black text-white min-h-screen p-8 flex flex-col items-center">
             <div className="sticky top-0 z-10 bg-black pb-6 pt-4 px-10">
-                <SearchBar/>
-                <Link to="/create" className="block bg-lime-500 text-white text-center py-2 px-4 rounded-md transition duration-300 hover:bg-lime-600">
+                <Link to="/create" className="responsive-width block bg-lime-500 text-white text-center py-2 px-4 rounded-md transition duration-300 hover:bg-lime-600">
                     Create New Task
                 </Link>
             </div>
