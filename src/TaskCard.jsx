@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-const TaskCard = ({ task, getTasks }) => {
+const TaskCard = ({task, getTasks}) => {
 
+    //Sets the bookmark state of an item
     const toggleBookmark = async (event) => {
+        // PreventDefault to stop the Link
         event.preventDefault();
         try {
             const response = await fetch(`http://localhost:8000/tasks/${task.id}/bookmark`, {
@@ -11,6 +13,7 @@ const TaskCard = ({ task, getTasks }) => {
             });
 
             if (response.ok) {
+                // Run getTasks again to reload the page
                 getTasks();
             } else {
                 console.error('Failed to toggle bookmark:', response.status);

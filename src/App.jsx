@@ -9,6 +9,7 @@ function App() {
     const [tasksPerPage, setTasksPerPage] = useState(5);
     const [totalPages, setTotalPages] = useState(1);
 
+    // Get the correct page of tasks from the API
     const getTasks = useCallback(async () => {
         try {
             const response = await fetch(`http://localhost:8000/tasks?start=${(currentPage - 1) * tasksPerPage + 1}&limit=${tasksPerPage}`, {
@@ -34,15 +35,17 @@ function App() {
         }
     }, [currentPage, tasksPerPage]);
 
-
+    // GetTasks everytime one of the dependencies is updated ^
     useEffect(() => {
         getTasks();
     }, [getTasks]);
 
+    // If there are no tasks yet, return Loading message
     if (!tasks) {
-        return <div>Loading...</div>;
+        return <div>Loading... <br/>If it takes too long try to refresh the page.</div>;
     }
 
+    // Return the page
     return (
         <div className="bg-black text-white min-h-screen p-8 flex flex-col items-center">
             <div className="sticky top-0 z-10 bg-black pb-6 pt-4 px-6">
@@ -56,6 +59,7 @@ function App() {
 
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 mt-8 mb-10">
 
+                {/*Map tasks and create a card for each*/}
                 {tasks.map((task, index) => (
                     <TaskCard
                         key={index}
@@ -65,6 +69,7 @@ function App() {
                 ))}
             </div>
 
+            {/*Create pagination and pass all of the imporant values*/}
             <div className="fixed bottom-0 p-4 px-6 bg-black text-center z-10">
                 <Pagination
                     tasksPerPage={tasksPerPage}

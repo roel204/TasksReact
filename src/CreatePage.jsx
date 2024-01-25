@@ -8,6 +8,7 @@ const CreatePage = () => {
         description: '',
     });
 
+    // Take the text that is being typed and store it
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -17,6 +18,7 @@ const CreatePage = () => {
 
     const navigate = useNavigate();
 
+    // POST the task to the API once form has been submitted
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -31,7 +33,7 @@ const CreatePage = () => {
             });
 
             if (response.ok) {
-                // Assuming the API returns the newly created task
+                // Save task response from the API
                 const newTask = await response.json();
 
                 // Redirect to the details page of the newly created task

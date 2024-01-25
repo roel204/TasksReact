@@ -6,33 +6,35 @@ const DetailsPage = () => {
     const [task, setTask] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
 
-    useEffect(() => {
-        // Fetch the specific task based on the taskId
-        const fetchTaskDetails = async () => {
-            try {
-                const response = await fetch(`http://localhost:8000/tasks/${taskId}`, {
-                    method: 'GET',
-                    headers: {
-                        Accept: 'application/json',
-                    },
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    setTask(data);
-                } else {
-                    console.error('Failed to fetch task details:', response.status);
-                }
-            } catch (error) {
-                console.error('Error fetching task details:', error);
-            }
-        };
-
-        fetchTaskDetails();
-    }, [taskId]);
-
     const navigate = useNavigate();
 
+    // Fetch the specific task based on the taskId
+    const fetchTaskDetails = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/tasks/${taskId}`, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setTask(data);
+            } else {
+                console.error('Failed to fetch task details:', response.status);
+            }
+        } catch (error) {
+            console.error('Error fetching task details:', error);
+        }
+    };
+    
+    useEffect(() => {
+        fetchTaskDetails();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [taskId]);
+
+    // Handle task deletion when requested
     const handleDelete = async () => {
         try {
             const response = await fetch(`http://localhost:8000/tasks/${taskId}`, {
@@ -61,12 +63,13 @@ const DetailsPage = () => {
     };
 
     if (!task) {
-        return <div>Loading...</div>;
+        return <div>Loading... <br/>If it takes too long try to refresh the page.</div>;
     }
 
     return (
         <>
             <div className="responsive-width max-w-2xl mx-auto mt-8 p-8 bg-gray-800 rounded-md shadow-md">
+                {/*Div with back, edit, delete button*/}
                 <div className="flex justify-between border-b-2 border-gray-700 pb-4">
                     <Link to="/" className="bg-gray-600 text-white py-2 px-6 rounded-md transition duration-300 hover:bg-gray-700">
                         &#8592;
@@ -80,9 +83,11 @@ const DetailsPage = () => {
                 </div>
                 <h1 className="text-3xl font-bold mb-4 mt-6">{task.name}</h1>
                 <p className="text-gray-500 mb-4">{`Status: ${task.status}`}</p>
-                <p className="text-gray-300" style={{ whiteSpace: 'pre-line' }}>{`${task.description}`}</p>
+                <p className="text-gray-300" style={{whiteSpace: 'pre-line'}}>{`${task.description}`}</p>
                 <div className="mt-8"></div>
             </div>
+
+            {/*Delete confirmation pop-up*/}
             {showConfirmation && (
                 <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
                     <div className="bg-gray-800 p-8 rounded-md">

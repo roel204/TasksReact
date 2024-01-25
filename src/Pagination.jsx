@@ -2,8 +2,7 @@ import React from 'react';
 
 const Pagination = ({tasksPerPage, currentPage, totalPages, setCurrentPage, setTasksPerPage}) => {
     const pageNumbers = Array.from({length: totalPages}, (_, index) => index + 1);
-
-    const options = [2, 5, 10, 25];
+    const pageOptions = [2, 5, 10, 25];
 
     return (
         <div className="responsive-width flex flex-nowrap items-center justify-center">
@@ -16,7 +15,7 @@ const Pagination = ({tasksPerPage, currentPage, totalPages, setCurrentPage, setT
                         setCurrentPage(1);
                     }}>
 
-                    {options.map((option) => (
+                    {pageOptions.map((option) => (
                         <option key={option} value={option}>
                             {option}
                         </option>

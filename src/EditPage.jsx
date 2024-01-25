@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {Link, useNavigate, useParams} from 'react-router-dom';
 
 const EditPage = () => {
-    const { taskId } = useParams();
+    const {taskId} = useParams();
     const [formData, setFormData] = useState({
         name: '',
         status: '',
@@ -11,30 +11,33 @@ const EditPage = () => {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchTaskDetails = async () => {
-            try {
-                const response = await fetch(`http://localhost:8000/tasks/${taskId}`, {
-                    method: 'GET',
-                    headers: {
-                        Accept: 'application/json',
-                    },
-                });
+    // GET the task with the ID to fill the form
+    const fetchTaskDetails = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/tasks/${taskId}`, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                },
+            });
 
-                if (response.ok) {
-                    const data = await response.json();
-                    setFormData(data);
-                } else {
-                    console.error('Failed to fetch task details:', response.status);
-                }
-            } catch (error) {
-                console.error('Error fetching task details:', error);
+            if (response.ok) {
+                const data = await response.json();
+                setFormData(data);
+            } else {
+                console.error('Failed to fetch task details:', response.status);
             }
-        };
+        } catch (error) {
+            console.error('Error fetching task details:', error);
+        }
+    };
 
+    useEffect(() => {
         fetchTaskDetails();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [taskId]);
 
+    // Take the text that is being typed and store it
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -42,6 +45,7 @@ const EditPage = () => {
         });
     };
 
+    // PUT the task to the API with the taskId once form has been submitted
     const handleUpdate = async (e) => {
         e.preventDefault();
 
