@@ -6,9 +6,9 @@
   "homepage": "https://roel204.github.io/TasksReact/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "build": "vite build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
