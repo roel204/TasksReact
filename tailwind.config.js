@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 const defaultConfig = require('tailwindcss/defaultConfig');
 
 module.exports = {
