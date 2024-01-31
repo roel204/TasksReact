@@ -42,7 +42,7 @@ function App() {
 
     // If there are no tasks yet, return Loading message
     if (!tasks) {
-        return <div>Loading... <br/>If it takes too long try to refresh the page.</div>;
+        return <div>Loading... <br/>If it takes too long try to refresh the page. <br/>(This app only works when my TasksAPI is turned on)</div>;
     }
 
     // Return the page
