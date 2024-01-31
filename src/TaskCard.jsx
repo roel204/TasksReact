@@ -24,7 +24,7 @@ const TaskCard = ({task, getTasks}) => {
     };
 
     return (
-        <Link to={`/details/${task.id}`}>
+        <Link to={`/TasksReact/details/${task.id}`}>
             <div className="responsive-width bg-gray-800 p-4 rounded-md cursor-pointer transition duration-100 transform hover:scale-105 mb-4 relative">
                 <div className="flex justify-between items-center mb-2">
                     <h3 className="text-xl font-semibold text-lime-400">{task.name}</h3>

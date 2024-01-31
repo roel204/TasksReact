@@ -51,7 +51,7 @@ function App() {
             <div className="sticky top-0 z-10 bg-black pb-6 pt-4 px-6">
                 <div className="flex responsive-width">
                     <h1 className="text-4xl text-lime-400 font-bold mr-10">Tasks:</h1>
-                    <Link to="/create" className="block w-full bg-lime-500 text-white text-center py-2 px-4 rounded-md transition duration-300 hover:bg-lime-600">
+                    <Link to="/TasksReact/create" className="block w-full bg-lime-500 text-white text-center py-2 px-4 rounded-md transition duration-300 hover:bg-lime-600">
                         Create New Task
                     </Link>
                 </div>

@@ -45,7 +45,7 @@ const DetailsPage = () => {
             });
 
             if (response.ok) {
-                navigate('/');
+                navigate('/TasksReact/');
             } else {
                 console.error('Failed to delete task:', response.status);
             }
@@ -71,10 +71,10 @@ const DetailsPage = () => {
             <div className="responsive-width max-w-2xl mx-auto mt-8 p-8 bg-gray-800 rounded-md shadow-md">
                 {/*Div with back, edit, delete button*/}
                 <div className="flex justify-between border-b-2 border-gray-700 pb-4">
-                    <Link to="/" className="bg-gray-600 text-white py-2 px-6 rounded-md transition duration-300 hover:bg-gray-700">
+                    <Link to="/TasksReact/" className="bg-gray-600 text-white py-2 px-6 rounded-md transition duration-300 hover:bg-gray-700">
                         &#8592;
                     </Link>
-                    <Link to={`/edit/${task._id}`} className="bg-blue-500 text-white py-2 px-6 rounded-md transition duration-300 hover:bg-blue-600">
+                    <Link to={`/TasksReact/edit/${task._id}`} className="bg-blue-500 text-white py-2 px-6 rounded-md transition duration-300 hover:bg-blue-600">
                         Edit
                     </Link>
                     <button onClick={showConfirmationPopup} className="bg-red-500 text-white py-2 px-6 rounded-md transition duration-300 hover:bg-red-600">

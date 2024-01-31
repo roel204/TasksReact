@@ -37,7 +37,7 @@ const CreatePage = () => {
                 const newTask = await response.json();
 
                 // Redirect to the details page of the newly created task
-                navigate(`/details/${newTask._id}`);
+                navigate(`/TasksReact/details/${newTask._id}`);
             } else {
                 console.error('Failed to create task:', response.status);
             }
@@ -49,7 +49,7 @@ const CreatePage = () => {
     return (
         <div className="responsive-width max-w-2xl mx-auto mt-8 p-8 bg-gray-800 rounded-md shadow-md">
             <div className="flex justify-between border-b-2 border-gray-700 pb-4">
-                <Link to="/" className="bg-gray-600 text-white py-2 px-6 rounded-md transition duration-300 hover:bg-gray-700">
+                <Link to="/TasksReact/" className="bg-gray-600 text-white py-2 px-6 rounded-md transition duration-300 hover:bg-gray-700">
                     &#8592;
                 </Link>
             </div>

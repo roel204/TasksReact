@@ -10,19 +10,19 @@ import EditPage from "./EditPage.jsx";
 // Routes for different pages
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: "/TasksReact/",
         element: <App/>,
     },
     {
-        path: "/details/:taskId",
+        path: "/TasksReact/details/:taskId",
         element: <DetailsPage/>,
     },
     {
-        path: "/create",
+        path: "/TasksReact/create",
         element: <CreatePage/>,
     },
     {
-        path: "/edit/:taskId",
+        path: "/TasksReact/edit/:taskId",
         element: <EditPage/>,
     },
 ]);
